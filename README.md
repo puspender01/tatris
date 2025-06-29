@@ -1,62 +1,88 @@
-# 🎮 Tatris - Chrome Extension for Picture-in-Picture Video
+# 🎮 Tatris - A Tetris Game in HTML/CSS/JavaScript
 
-Tatris is a lightweight Chrome extension that enables Picture-in-Picture (PiP) mode for embedded YouTube videos or Tetris-style games directly from any web page. With a simple right-click, pop out your video into a floating window and enjoy seamless multitasking!
+Tatris is a simple web-based implementation of the classic Tetris block game. Built using vanilla JavaScript, HTML, and CSS — this game is lightweight, responsive, and containerized using Docker for easy deployment. A Kubernetes manifest is also included for deploying to a cluster.
+
+---
+
+## 📸 Game Preview
+
+> *(Optional: Add a screenshot here)*  
+> ![Tatris Screenshot](./screenshot.png)
 
 ---
 
 ## 🚀 Features
 
-- ✅ Detects embedded YouTube videos and Tetris games
-- 🖱️ Adds "Add to PiP" option in right-click context menu
-- 📺 Launches selected content into Picture-in-Picture window
-- 💻 Lightweight and fast Chrome/WebExtension support
-- 🎮 Supports HTML-based games like Tetris (experimental)
+- Classic Tetris gameplay
+- Clean and responsive UI
+- No external libraries used — pure JS/CSS/HTML
+- Dockerized for easy deployment
+- Kubernetes manifest (`pod.yml`) included
 
 ---
 
 ## 🛠️ Tech Stack
 
-- JavaScript (ES6)
-- HTML / CSS
-- Chrome Extensions API (contextMenus, tabs, content scripts)
+- HTML5 / CSS3
+- JavaScript (Vanilla)
+- Docker
+- Kubernetes (Pod deployment)
 
 ---
 
-## 📦 Installation
+## 📦 Run Locally
 
-To install the extension locally:
+### Option 1: Open Directly in Browser
 
-1. Clone this repository:
+1. Clone the repository:
    ```bash
    git clone https://github.com/puspender01/tatris.git
-Open Chrome and navigate to chrome://extensions/
+   cd tatris
+Open index.html in your browser:
 
-Enable Developer Mode (top-right)
+arduino
+Copy
+Edit
+double-click index.html
+Option 2: Run with Docker
+bash
+Copy
+Edit
+# Build Docker image
+docker build -t tatris-game .
 
-Click on Load unpacked
+# Run container
+docker run -d -p 8080:80 tatris-game
 
-Select the tatris folder you just cloned
+# Open in browser
+http://localhost:8080
+Option 3: Deploy to Kubernetes
+Make sure your cluster is up and running.
 
-▶️ Usage
-Navigate to a webpage with an embedded YouTube video or game.
-
-Right-click on the video/game.
-
-Select Add to PiP from the context menu.
-
-Enjoy the floating PiP window while you browse other content!
-
-🧪 Development
-Feel free to contribute! Follow the steps below:
+Apply the pod manifest:
 
 bash
 Copy
 Edit
-# Clone and open the project
-git clone https://github.com/puspender01/tatris.git
-cd tatris
+kubectl apply -f pod.yml
+Port-forward to access the game:
 
-# Make your changes and test using Chrome's Load Unpacked feature
-🧑‍💻 Author
+bash
+Copy
+Edit
+kubectl port-forward pod/puspod 9090:80
+# Open in browser: http://localhost:9090
+📁 Project Structure
+bash
+Copy
+Edit
+tatris/
+├── index.html         # Main game UI
+├── style.css          # Game styling
+├── script.js          # Game logic
+├── Dockerfile         # Docker build file
+├── pod.yml            # Kubernetes pod definition
+🙋 Author
 Puspender Kumar
 GitHub
+
