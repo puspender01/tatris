@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: puspod
+spec:
+  containers:
+  - name: puspender-tatris
+    image: puspe/tatris:v2
+    ports:
+      - containerPort: 80
